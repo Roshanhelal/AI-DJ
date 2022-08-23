@@ -38,3 +38,13 @@ body{
     margin: 15px;
 
 }
+.play_button{
+    font-size: 25px;
+    width: 130px;
+
+}
+canvas{
+    border: 5px solid white;
+    border-radius: 20px;
+
+}
