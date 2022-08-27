@@ -3,6 +3,7 @@ var left_wrist_X=0;
 var left_wrist_Y=0;
 var right_wrist_X=0;
 var right_wrist_Y=0;
+var score_left_wrist=0;
 function preload(){
     song=loadSound("music.mp3")
 }
@@ -23,7 +24,18 @@ function setup(){
 
 function draw(){
     image (video,0,0,600,500);
+    if(score_left_wrist>0.2){
 
+    
+    fill ("#fc0303");
+    stroke("#fc0303");
+    circle(left_wrist_X,left_wrist_Y,20);
+    number_left_wrist_x=Number(left_wrist_X);
+    remove_decimals=floor(number_left_wrist_x);
+    volume=remove_decimals/500;
+    song.setVolume(volume);
+    document.getElementById("volume").innerHTML="Volume: "+volume;
+    }
 }
 
 function play(){
@@ -46,6 +58,8 @@ if(results.length>0)
     right_wrist_X=results[0].pose.rightWrist.x;
     right_wrist_Y=results[0].pose.rightWrist.y;
     console.log("right Wrist x="+right_wrist_X+"right wrist y="+right_wrist_Y);
+    score_left_wrist=results[0].pose.keypoints[9].score;
+    
 }
 
 }
